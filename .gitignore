@@ -1,0 +1,8 @@
+*.suo
+*.user
+*.dll
+*.pdb
+_ReSharper.*
+bin
+obj
+packages
