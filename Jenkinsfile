@@ -1,4 +1,7 @@
-def gv
+def gvBuild
+def gvTest
+def gvPackage
+def gvDeploy
 
 pipeline{
     agent any
@@ -8,32 +11,35 @@ pipeline{
         stage("Initialize") {
             steps{
                 script {
-                    gv = load "build.groovy"
+                    gvBuild = load "build.groovy"
+                    gvTest = load "test.groovy"
+                    gvPackage = load "package.groovy"
+                    gvDeploy = load "deploy.groovy"
                 }
             }
         }
 
         stage("Build"){
             steps{
-                echo gv.buildProject()
+                echo gvBuild.buildProject()
             }
         }
 
         stage("Test"){
             steps{
-                echo "Test Stage"
+                echo gvTest.testProject()
             }
         }
 
         stage("Package"){
             steps{
-                echo "Package Stage"
+                echo gvPackage.packageProject()
             }
         }
 
         stage("Deploy"){
             steps{
-                echo "Test Stage"
+                echo gvDeploy.deployProject()
             }
         }
     }
