@@ -12,8 +12,8 @@ pipeline{
             steps{
                 echo "Test Stage"
             }
-        })
-
+        }
+        
         stage("Package"){
             steps{
                 echo "Package Stage"
