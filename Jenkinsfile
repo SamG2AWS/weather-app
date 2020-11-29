@@ -7,7 +7,7 @@ pipeline{
     agent any
 
     environment {
-        DOTNET = 'C:\\Program Files (x86)\\dotnet',
+        DOTNET = 'C:\\Program Files (x86)\\dotnet\\'
         GIT = 'https://github.com/SamG2AWS/weather-app.git'
     }
 
