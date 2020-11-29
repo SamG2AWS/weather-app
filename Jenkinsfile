@@ -53,7 +53,7 @@ pipeline{
 
         stage("Deploy"){
             steps{
-                bat "Copy-Item -Path 'WeatherApi\\bin\\Release\\net5.0\\publish\\*' -Destination 'D:\\Jenkins\\WeatherApi' -Recurse -Force"
+                powershell 'Copy-Item -Path "WeatherApi\\bin\\Release\\net5.0\\publish\\*" -Destination "D:\\Jenkins\\WeatherApi" -Recurse -Force'
             }
         }
     }
