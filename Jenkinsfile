@@ -41,13 +41,13 @@ pipeline{
 
         stage("Test"){
             steps{
-                bat "dotnet test WeatherApiTests\\WeatherApiTests.csproj"
+                bat "dotnet test \\WeatherApiTests\\WeatherApiTests.csproj"
             }
         }
 
         stage("Package"){
             steps{
-                bat "dotnet publish WeatherApiTests\\WeatherApi.csproj --configuration Release"
+                bat "dotnet publish \\WeatherApiTests\\WeatherApi.csproj --configuration Release"
             }
         }
 
