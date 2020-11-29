@@ -6,6 +6,11 @@ def gvDeploy
 pipeline{
     agent any
 
+    environment {
+        DOTNET = 'C:\\Program Files (x86)\\dotnet',
+        GIT = 'https://github.com/SamG2AWS/weather-app.git'
+    }
+
     stages{
 
         stage("Initialize") {
@@ -19,9 +24,16 @@ pipeline{
             }
         }
 
+        stage("Checkout"){
+            steps {
+                git branch: 'main', url: "${GIT}"
+            }
+        }
+
+
         stage("Build"){
             steps{
-                echo gvBuild.buildProject()
+                bat "dotnet restore weather-app.sln"
             }
         }
 
