@@ -41,13 +41,13 @@ pipeline{
 
         stage("Test"){
             steps{
-                echo gvTest.testProject()
+                bat "dotnet test WeatherApiTests\\WeatherApiTests.csproj"
             }
         }
 
         stage("Package"){
             steps{
-                echo gvPackage.packageProject()
+                bat "dotnet publish WeatherApiTests\\WeatherApi.csproj --configuration Release"
             }
         }
 
