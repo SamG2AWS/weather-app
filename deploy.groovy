@@ -1,5 +1,7 @@
 def deployProject(){
-    echo "Deploying this application"
+    powershell 'Copy-Item -Path "WeatherApi\\bin\\Release\\net5.0\\publish\\*" -Destination "D:\\Jenkins\\WeatherApi" -Recurse -Force'
+    powershell returnStatus: true, script: '.\\IISDeployment.ps1'
+
 }
 
 return this
