@@ -1,5 +1,7 @@
 def buildProject(){
-    echo "Building this application"
+    bat "dotnet restore weather-app.sln"
+    bat "dotnet clean weather-app.sln"
+    bat "dotnet build weather-app.sln --configuration Release"
 }
 
 return this
