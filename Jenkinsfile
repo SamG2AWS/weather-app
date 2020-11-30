@@ -33,9 +33,9 @@ pipeline{
 
         stage("Build"){
             steps{
-                bat "dotnet restore weather-app.sln"
-                bat "dotnet clean weather-app.sln"
-                bat "dotnet build weather-app.sln --configuration Release"
+                scripts {
+                    gvBuild.buildProject()
+                }
             }
         }
 
