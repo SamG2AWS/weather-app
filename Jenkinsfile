@@ -33,7 +33,7 @@ pipeline{
 
         stage("Build"){
             steps{
-                scripts {
+                script {
                     gvBuild.buildProject()
                 }
             }
