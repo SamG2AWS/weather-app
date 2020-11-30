@@ -3,7 +3,7 @@ def gvTest
 def gvPackage
 def gvDeploy
 
-pipeline{
+pipeline {
     agent any
 
     environment {
@@ -11,49 +11,53 @@ pipeline{
         GIT = 'https://github.com/SamG2AWS/weather-app.git'
     }
 
-    stages{
-
-        stage("Initialize") {
-            steps{
+    stages {
+        stage('Initialize') {
+            steps {
                 script {
-                    gvBuild = load "build.groovy"
-                    gvTest = load "test.groovy"
-                    gvPackage = load "package.groovy"
-                    gvDeploy = load "deploy.groovy"
+                    gvBuild = load 'build.groovy'
+                    gvTest = load 'test.groovy'
+                    gvPackage = load 'package.groovy'
+                    gvDeploy = load 'deploy.groovy'
                 }
             }
         }
 
-        stage("Checkout"){
+        stage('Checkout') {
             steps {
                 git branch: 'main', url: "${GIT}"
             }
         }
 
-
-        stage("Build"){
-            steps{
+        stage('Build') {
+            steps {
                 script {
                     gvBuild.buildProject()
                 }
             }
         }
 
-        stage("Test"){
-            steps{
-                bat "dotnet test WeatherApiTests\\WeatherApiTests.csproj"
+        stage('Test') {
+            steps {
+                script {
+                    gvTest.testProject()
+                }
             }
         }
 
-        stage("Package"){
-            steps{
-                bat "dotnet publish WeatherApi\\WeatherApi.csproj --configuration Release"
+        stage('Package') {
+            steps {
+                script {
+                    gvPackage.packageProject()
+                }
             }
         }
 
-        stage("Deploy"){
-            steps{
-                powershell 'Copy-Item -Path "WeatherApi\\bin\\Release\\net5.0\\publish\\*" -Destination "D:\\Jenkins\\WeatherApi" -Recurse -Force'
+        stage('Deploy') {
+            steps {
+                script {
+                    gvDeploy.deployProject()
+                }
             }
         }
     }
