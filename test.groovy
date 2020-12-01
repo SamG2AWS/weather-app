@@ -1,5 +1,5 @@
 def testProject(){
-    echo "Test this application"
+    bat "dotnet test WeatherApiTests\\WeatherApiTests.csproj"
 }
 
 return this
