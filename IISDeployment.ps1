@@ -25,5 +25,5 @@ if (Test-Path $iisAppName -pathType container)
 }
 
 #create the site
-$iisApp = New-Item $iisAppName -bindings @{protocol="http";bindingInformation=":90:" + $iisAppName} -physicalPath $directoryPath
+$iisApp = New-Item $iisAppName -bindings @{protocol="http";bindingInformation=":9991:" + $iisAppName} -physicalPath $directoryPath
 $iisApp | Set-ItemProperty -Name "applicationPool" -Value $iisAppPoolName
