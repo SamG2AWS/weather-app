@@ -1,5 +1,5 @@
 def packageProject(){
-    echo "Package this application"
+    bat "dotnet publish WeatherApi\\WeatherApi.csproj --configuration Release"
 }
 
 return this
