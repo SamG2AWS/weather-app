@@ -2,7 +2,7 @@ Import-Module WebAdministration
 
 $iisAppPoolName = "WeatherApi-AppPool"
 $iisAppName = "WeatherApi"
-$directoryPath = "D:\\Jenkins\\WeatherApi"
+$directoryPath = "D:\Jenkins\WeatherApi"
 
 
 #navigate to the app pools root
